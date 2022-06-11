@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>update group</title>
+</head>
+<style>
+  body{
+    background-image: url("https://vjoy.cc/wp-content/uploads/2020/06/bezymyannyjavae.jpg");
+  }
+</style>
+<body>
+<h2>Update Group</h2>
+<form action="#"
+      th:action="@{'/api/groups/update/' +${groupId}}"
+      method="post"
+      th:object="${updateGroup}">
+
+  <label for="groupName">Group Name</label>
+  <input id="groupName" th:field="${updateGroup.groupName}" placeholder="groupName">
+  <br><br>
+  <label for="dateOfStart">Date of Start</label>
+  <input id="dateOfStart" type="date" th:field="${updateGroup.dateOfStart}" placeholder="dateOfStart">
+  <br><br>
+  <label for="dateOfFinish">Date of Finish</label>
+  <input id="dateOfFinish" type="date" th:field="${updateGroup.dateOfFinish}" placeholder="dateOfFinish">
+  <br><br>
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

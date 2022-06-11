@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>save new teacher</title>
+</head>
+<style>
+  body{
+    background-image: url("https://news.liga.net/images/general/2016/08/09/201608090859176753.jpg?v=1520542141");
+  }
+</style>
+<body>
+<h2>Save new Teacher</h2>
+<form action="#"
+      th:action="@{'/api/teachers/save/'+${courseId}}"
+      method="post"
+      th:object="${emptyTeacher}">
+
+  <label for="firstName">First Name</label>
+  <input id="firstName" th:field="${emptyTeacher.firstName}" placeholder="firstName">
+  <br><br>
+  <label for="lastName">Last Name</label>
+  <input id="lastName" th:field="${emptyTeacher.lastName}" placeholder="lastName">
+  <br><br>
+
+  <label for="email">Email</label>
+  <input id="email" th:field="${emptyTeacher.email}" placeholder="xxxxxx@gmail.com">
+  <br><br>
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>

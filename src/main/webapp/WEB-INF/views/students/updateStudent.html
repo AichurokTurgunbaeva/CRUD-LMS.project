@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>update student</title>
+</head>
+<style>
+  body{
+    background-image: url("https://wallpaperaccess.com/full/1098084.jpg");
+  }
+</style>
+<body>
+<h2>Update Student</h2>
+<form action="#"
+      th:action="@{'/api/students/update/' +${studentId}}"
+      method="post"
+      th:object="${updateStudent}">
+
+  <label for="firstName">First Name</label>
+  <input id="firstName" th:field="${updateStudent.firstName}" placeholder="firstName">
+  <br><br>
+  <label for="lastName">Last Name</label>
+  <input id="lastName" th:field="${updateStudent.lastName}" placeholder="lastName">
+  <br><br>
+  <label for="email">Email</label>
+  <input id="email" th:field="${updateStudent.email}" placeholder="email">
+  <br><br>
+<!--  <label for="studyFormat">Study Format</label>-->
+<!--  <input id="studyFormat" th:field="${updateStudent.studyFormat}" placeholder="studyFormat">-->
+  <label>Select study format: </label>
+  <select name="studyFormat">
+    <option th:each="studyFormat : ${T(peaksoft.enums.StudyFormat).values()}"
+            th:value="${updateStudent.studyFormat}" th:text="${studyFormat}"></option>
+  </select>
+  <br><br>
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

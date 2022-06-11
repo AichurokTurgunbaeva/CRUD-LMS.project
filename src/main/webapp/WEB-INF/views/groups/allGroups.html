@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>all groups</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+  body{
+    background-image: url("https://www.wallpaperflare.com/static/253/144/910/nature-landscape-giant-s-causeway-sea-wallpaper.jpg");
+  }
+</style>
+<body>
+<h2>All Groups</h2>
+<table style="background-color: deepskyblue" class ="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">groupName</th>
+    <th scope="col">dateOfStart</th>
+    <th scope="col">dateOfFinish</th>
+    <th scope="col">courses</th>
+    <th scope="col">Students</th>
+    <th scope="col">Actions</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="group: ${groups}">
+    <td th:text="${group.getId()}"></td>
+    <td th:text="${group.groupName}"></td>
+    <td th:text="${group.dateOfStart}"></td>
+    <td th:text="${group.dateOfFinish}"></td>
+    <td>
+      <a th:href="@{'/api/courses/find/by/'+${courses.get(0).getCourses().get(0).getCompany().id}}">
+        <button>Courses</button>
+      </a>
+    </td>
+    <td>
+      <a th:href="@{'/api/students/find/by/'+${group.id}}">
+        <button>Students</button>
+      </a>
+    </td>
+    <td>
+      <a th:href="@{'/api/groups/update/'+${group.id}}">
+        <button>Update</button>
+      </a>
+      <a th:href="@{'/api/groups/delete/'+${group.id}}">
+        <button>Delete</button>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <a th:href="@{'/api/groups/save/' + ${courseId}}">
+    <button>Add new group</button>
+  </a>
+</div>
+<br>
+<div>
+  <a th:href="@{/api/companies}">
+    <button>Go back</button>
+  </a>
+</div>
+<br>
+
+</body>
+</html>
